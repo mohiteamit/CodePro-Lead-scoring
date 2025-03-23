@@ -37,7 +37,7 @@ class DataTransformer:
 
     def interactions_mapping(self):
         df = pd.read_sql(f"SELECT * FROM {CLEANED_TABLE_NAME}", self.conn)
-        mapping_df = pd.read_csv(INTERACTION_MAPPING_FILE)
+        mapping_df = pd.read_csv(INTERACTION_MAPPING_FILE, header=0)
         interaction_cols = list(mapping_df.columns)
         df = df[interaction_cols + [col for col in df.columns if col not in interaction_cols]]
         for interaction_type in mapping_df.columns:
