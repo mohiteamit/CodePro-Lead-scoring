@@ -24,7 +24,7 @@ class DataTransformer:
     def map_city_tier(self):
         city_tier_mapping = self._load_mapping_dict(CITY_TIER_MAPPING_FILE, 'city_tier_mapping')
         df = pd.read_sql(f"SELECT * FROM {RAW_TABLE_NAME}", self.conn)
-        df['city_tier'] = df['city_tier'].map(city_tier_mapping).fillna(3.0)
+        df['city_tier'] = df['city_mapped'].map(city_tier_mapping).fillna(3.0)
         df.to_sql(CLEANED_TABLE_NAME, self.conn, if_exists='replace', index=False)
 
     def map_categorical_vars(self):
