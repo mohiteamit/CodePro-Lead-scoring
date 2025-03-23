@@ -4,6 +4,7 @@ Folder-Structure2.txt
 phase1.py
 phase2.py
 phase3.py
+mlruns/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
